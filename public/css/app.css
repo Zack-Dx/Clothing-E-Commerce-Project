@@ -1,0 +1,18 @@
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #232323;
+}
+
+nav li:last-child a {
+  background: rgb(236, 72, 153);
+}
+nav li:last-child a:hover {
+  background-color: rgb(190, 24, 93);
+}
+
+nav li a {
+  transition: all 0.3s all;
+}
+nav li a:hover {
+  color: rgb(236, 72, 153);
+}
