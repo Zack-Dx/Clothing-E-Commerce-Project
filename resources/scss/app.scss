@@ -8,7 +8,7 @@ body {
 
 //Navigation Menu
 
-nav li:last-child a {
+#cart-icon {
   background: $primary;
   &:hover {
     background-color: $primary-hover;

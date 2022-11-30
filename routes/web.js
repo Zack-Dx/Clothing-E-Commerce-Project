@@ -6,12 +6,9 @@ export default function initRoutes(app) {
   // Home Route
   app.get("/", homeController().index);
 
-// Authentication Routes
-app.get ('/register',authController().register)
+  // Authentication Routes
+  app.get("/register", authController().register);
 
-
-// Cart Routes
-app.get ('/cart',cartController().cart)
+  // Cart Routes
+  app.get("/cart", cartController().cart);
 }
-
-
