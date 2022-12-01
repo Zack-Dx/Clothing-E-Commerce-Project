@@ -21,3 +21,12 @@ nav li a {
     color: $primary;
   }
 }
+
+//Cart button
+.cart-btn {
+  background: $primary;
+
+  &:hover {
+    background: $primary-hover;
+  }
+}

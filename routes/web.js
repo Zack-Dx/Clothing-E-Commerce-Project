@@ -1,6 +1,7 @@
 import { authController } from "../app/http/controllers/authController.js";
 import { cartController } from "../app/http/controllers/customers/cartController.js";
 import { capsController } from "../app/http/controllers/customers/pages/capsController.js";
+import { hoodieController } from "../app/http/controllers/customers/pages/hoodieController.js";
 import { tshirtController } from "../app/http/controllers/customers/pages/tshirtController.js";
 
 import { homeController } from "../app/http/controllers/homeController.js";
@@ -19,5 +20,8 @@ export default function initRoutes(app) {
   app.get("/tshirts", tshirtController().index);
 
   //Caps Page
-  app.get('/caps',capsController().index)
+  app.get("/caps", capsController().index);
+
+  //Hoodie Page
+  app.get("/hoodies", hoodieController().index);
 }

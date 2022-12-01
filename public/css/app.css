@@ -16,3 +16,10 @@ nav li a {
 nav li a:hover {
   color: rgb(236, 72, 153);
 }
+
+.cart-btn {
+  background: rgb(236, 72, 153);
+}
+.cart-btn:hover {
+  background: rgb(190, 24, 93);
+}
