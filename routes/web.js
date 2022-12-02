@@ -1,3 +1,4 @@
+import { errorPage } from "../app/http/controllers/404Controller.js";
 import { authController } from "../app/http/controllers/authController.js";
 import { cartController } from "../app/http/controllers/customers/cartController.js";
 import { capsController } from "../app/http/controllers/customers/pages/capsController.js";
@@ -24,4 +25,7 @@ export default function initRoutes(app) {
 
   //Hoodie Page
   app.get("/hoodies", hoodieController().index);
+
+  //404 Error Page
+  app.get("*", errorPage().index);
 }
