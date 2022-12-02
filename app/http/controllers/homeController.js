@@ -1,8 +1,9 @@
+
 function homeController() {
-    // Factory Function (Function returning an Object)
+  // Factory Function (Function returning an Object)
   return {
-    index(req, res) {
-      res.render("home");
+    async index(req, res) {
+     res.render('home')
     },
   };
 }

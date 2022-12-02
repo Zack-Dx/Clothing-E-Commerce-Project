@@ -1,10 +1,16 @@
+import { Tees } from "../../../../models/menu.js";
 function tshirtController() {
   return {
-    index(req, res) {
-      res.render("customers/tshirt");
+    async index(req, res) {
+      try {
+        const products = await Tees.find();
+
+        res.render("customers/tshirt", { products: products });
+      } catch (error) {
+        console.log(error);
+      }
     },
   };
 }
 
-
-export {tshirtController}
+export { tshirtController };

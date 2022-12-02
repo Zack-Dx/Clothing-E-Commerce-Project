@@ -2,10 +2,9 @@ function cartController() {
   return {
     //Get
     cart(req, res) {
-      res.render("customers/cart");
+      res.render("purchase/cart");
     },
   };
 }
 
-
-export {cartController}
+export { cartController };

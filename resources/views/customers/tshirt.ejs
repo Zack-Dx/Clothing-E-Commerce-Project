@@ -1,7 +1,7 @@
 <section class="text-gray-600 body-font">
   <div class="container px-5 py-4 md:py-16 mx-auto">
     <div class="flex flex-wrap -m-4 text-center">
-      <% for(let i= 0 ; i<8; i++){ %>
+      <% products.forEach((tshirt)=>{ %>
       <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
         <a class="block relative cursor-pointer rounded overflow-hidden">
           <img
@@ -15,14 +15,13 @@
             T-Shirts
           </h3>
           <h2 class="text-gray-900 title-font text-lg font-medium">
-            Limited Edition
+            <%= tshirt.name %>
           </h2>
-          <p class="mt-1">₹ 499</p>
+          <p class="mt-1">₹ <%= tshirt.price %></p>
           <p class="mt-1">M,XL,XXL,XXXL</p>
         </div>
       </div>
-      <% } %>
+      <% }) %>
     </div>
   </div>
 </section>
-

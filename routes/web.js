@@ -4,6 +4,7 @@ import { cartController } from "../app/http/controllers/customers/cartController
 import { capsController } from "../app/http/controllers/customers/pages/capsController.js";
 import { hoodieController } from "../app/http/controllers/customers/pages/hoodieController.js";
 import { tshirtController } from "../app/http/controllers/customers/pages/tshirtController.js";
+import { productController } from "../app/http/controllers/customers/productController.js";
 
 import { homeController } from "../app/http/controllers/homeController.js";
 
@@ -25,6 +26,10 @@ export default function initRoutes(app) {
 
   //Hoodie Page
   app.get("/hoodies", hoodieController().index);
+
+  //Product Page
+
+  app.get("/product", productController().index);
 
   //404 Error Page
   app.get("*", errorPage().index);
