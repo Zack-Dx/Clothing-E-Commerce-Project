@@ -30,3 +30,12 @@ nav li a {
     background: $primary-hover;
   }
 }
+
+.btn-primary {
+  background: $primary;
+  transition: $smooth;
+  &:hover {
+    background: $primary-hover;
+  }
+}
+

@@ -23,3 +23,11 @@ nav li a:hover {
 .cart-btn:hover {
   background: rgb(190, 24, 93);
 }
+
+.btn-primary {
+  background: rgb(236, 72, 153);
+  transition: all 0.3s all;
+}
+.btn-primary:hover {
+  background: rgb(190, 24, 93);
+}

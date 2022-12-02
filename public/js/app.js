@@ -21,7 +21,17 @@ __webpack_require__.r(__webpack_exports__);
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
+var toggleCart = document.querySelector("#toggleCart");
+var closePanel = document.querySelector("#closePanel");
+var cart = document.querySelector("#cart");
 
+// Cart Panel
+toggleCart.addEventListener("click", function () {
+  cart.style.display = "block";
+});
+closePanel.addEventListener("click", function () {
+  cart.style.display = "none";
+});
 
 /***/ })
 
