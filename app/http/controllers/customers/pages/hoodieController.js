@@ -1,10 +1,12 @@
+import { Hoodies } from "../../../../models/products.js";
 function hoodieController() {
-    return {
-      index(req, res) {
-        res.render("customers/hoodies");
-      },
-    };
-  }
-  
-  
-  export {hoodieController}
+  return {
+    async index(req, res) {
+      const hoodies = await Hoodies.find();
+
+      res.render("customers/hoodies", { hoodies: hoodies });
+    },
+  };
+}
+
+export { hoodieController };
