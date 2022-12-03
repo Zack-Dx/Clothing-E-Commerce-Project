@@ -29,7 +29,7 @@ export default function initRoutes(app) {
 
   //Product Page
 
-  app.get("/product", productController().index);
+  app.get(`/product/`, productController().index);
 
   //404 Error Page
   app.get("*", errorPage().index);

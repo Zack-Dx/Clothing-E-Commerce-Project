@@ -1,4 +1,4 @@
-import { Tees } from "../../../../models/menu.js";
+import { Tees } from "../../../../models/tshirt.js";
 function tshirtController() {
   return {
     async index(req, res) {
