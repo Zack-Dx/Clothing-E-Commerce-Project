@@ -24,6 +24,7 @@ __webpack_require__.r(__webpack_exports__);
 var toggleCart = document.querySelector("#toggleCart");
 var closePanel = document.querySelector("#closePanel");
 var cart = document.querySelector("#cart");
+var addToCart = document.querySelectorAll(".add-to-cart");
 
 // Cart Panel
 toggleCart.addEventListener("click", function () {
@@ -31,6 +32,14 @@ toggleCart.addEventListener("click", function () {
 });
 closePanel.addEventListener("click", function () {
   cart.style.display = "none";
+});
+
+// Add to Cart
+addToCart.forEach(function (btn) {
+  btn.addEventListener("click", function (e) {
+    var tshirt = JSON.parse(btn.dataset.tshirt);
+    console.log(tshirt);
+  });
 });
 
 /***/ })

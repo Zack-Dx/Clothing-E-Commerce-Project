@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
-import express from "express";
+import express, { urlencoded } from "express";
 const app = express();
 const PORT = process.env.PORT || 4900;
 import mongoose from "mongoose";
@@ -26,6 +26,8 @@ app.use(
 
 //Middlewares
 app.use(flash());
+app.use(express.json())
+
 
 // Template Engine
 app.use(expressEjsLayouts); // For layout

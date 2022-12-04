@@ -4,8 +4,7 @@ function tshirtController() {
     async index(req, res) {
       try {
         const products = await Tees.find();
-
-        res.render("customers/tshirt", { products: products });
+        res.render("customers/tshirt", { products});
       } catch (error) {
         console.log(error);
       }
@@ -13,4 +12,4 @@ function tshirtController() {
   };
 }
 
-export { tshirtController };
+export { tshirtController};

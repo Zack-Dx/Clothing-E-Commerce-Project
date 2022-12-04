@@ -8,5 +8,5 @@ const productsSchema = mongoose.Schema({
 });
 
 const Tees = mongoose.model("tshirt", productsSchema);
-const Hoodies = mongoose.model('hoodie', productsSchema)
-export { Tees,Hoodies };
+
+export { Tees };
