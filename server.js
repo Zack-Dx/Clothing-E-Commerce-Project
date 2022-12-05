@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import express, { urlencoded } from "express";
 const app = express();
-const PORT = process.env.PORT || 4900;
+const PORT = process.env.PORT || 80;
 import mongoose from "mongoose";
 import { dbConnection } from "./app/db/conn.js";
 dbConnection();
@@ -25,9 +25,13 @@ app.use(
 );
 
 //Middlewares
-app.use(flash());
-app.use(express.json())
+app.use((req, res, next) => {
+  res.locals.session = req.session;
+  next();
+}); // Global Middlware for Cart Counter 
 
+app.use(flash());
+app.use(express.json());
 
 // Template Engine
 app.use(expressEjsLayouts); // For layout

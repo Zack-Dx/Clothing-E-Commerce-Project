@@ -25,7 +25,7 @@
             class="flex items-center text-center space-x-4 font-bold md:flex-row"
           >
             <li><a href="/">Home</a></li>
-            <li><a href="/tshirts">T-Shirts</a></li>
+            <li><a href="/tshirts">Shop</a></li>
             <!-- <li><a href="/register">Register</a></li>
           <li><a href="/login">Login</a></li> -->
             <li
@@ -33,7 +33,7 @@
               class="px-3 m-2 rounded-full py-2 flex items-center btn-primary"
             >
               <span id="cartCounter" class="text-white font-bold pr-2">
-                0
+         <%= session.cart ? session.cart.totalQty : "" %>
               </span>
 
               <img src="/img/cart.png" alt="" />

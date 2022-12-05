@@ -15,6 +15,7 @@ export default function initRoutes(app) {
 
   // Cart Routes
   app.get("/cart", cartController().cart);
+  app.post('/update-cart',cartController().update)
 
   //Tshirt Routes
   app.get("/tshirts", tshirtController().index);
