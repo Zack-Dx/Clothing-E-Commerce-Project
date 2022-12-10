@@ -9153,19 +9153,9 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
-var toggleCart = document.querySelector("#toggleCart");
-var closePanel = document.querySelector("#closePanel");
-var cart = document.querySelector("#cart");
-var addToCart = document.querySelectorAll(".add-to-cart");
-var cartCounter = document.querySelector("#cartCounter");
-
-// Cart Panel
-toggleCart.addEventListener("click", function () {
-  cart.style.display = "block";
-});
-closePanel.addEventListener("click", function () {
-  cart.style.display = "none";
-});
+var cart = document.querySelector('#cart');
+var addToCart = document.querySelectorAll('.add-to-cart');
+var cartCounter = document.querySelector('#cartCounter');
 
 //Update Cart
 function updateCart(_x) {
@@ -9180,16 +9170,16 @@ function _updateCart() {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_1__["default"].post("/update-cart", tshirt);
+            return axios__WEBPACK_IMPORTED_MODULE_1__["default"].post('/update-cart', tshirt);
           case 3:
             res = _context.sent;
             cartCounter.innerText = res.data.totalQty; // Updating Cart Counter
 
             //Noty Notification
             new noty__WEBPACK_IMPORTED_MODULE_0__({
-              type: "success",
+              type: 'success',
               timeout: 1000,
-              text: "Items added to cart"
+              text: 'Items added to cart'
             }).show();
             _context.next = 11;
             break;
@@ -9197,9 +9187,9 @@ function _updateCart() {
             _context.prev = 8;
             _context.t0 = _context["catch"](0);
             new noty__WEBPACK_IMPORTED_MODULE_0__({
-              type: "error",
+              type: 'error',
               timeout: 1000,
-              text: "Something went wrong"
+              text: 'Something went wrong'
             }).show();
           case 11:
           case "end":
@@ -9211,7 +9201,7 @@ function _updateCart() {
   return _updateCart.apply(this, arguments);
 }
 addToCart.forEach(function (btn) {
-  btn.addEventListener("click", function (e) {
+  btn.addEventListener('click', function (e) {
     var tshirt = JSON.parse(btn.dataset.tshirt);
     updateCart(tshirt);
   });
