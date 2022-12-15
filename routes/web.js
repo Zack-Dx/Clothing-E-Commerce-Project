@@ -13,6 +13,7 @@ export default function initRoutes(app) {
     // Authentication Routes
     app.get('/register', authController().register);
     app.get('/login', authController().login);
+    app.post('/register', authController().postRegister);
 
     // Cart Routes
     app.get('/cart', cartController().cart);

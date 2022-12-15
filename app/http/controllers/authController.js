@@ -1,3 +1,4 @@
+import { User } from '../../models/user.js';
 function authController() {
     return {
         //Register
@@ -6,6 +7,11 @@ function authController() {
         },
         login(req, res) {
             res.render('auth/login');
+        },
+        //Registration
+        postRegister(req, res) {
+            // Validation Check
+            console.log(req.body);
         },
     };
 }
