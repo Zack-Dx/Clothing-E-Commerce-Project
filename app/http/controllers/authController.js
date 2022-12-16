@@ -16,7 +16,7 @@ function authController() {
                 const { name, email, password, cpassword } = req.body;
                 if (!name || !email || !password || !cpassword) {
                     req.flash('error', 'All fields are required');
-                    // To resend data
+                    // To resend the filled name and email
                     req.flash('name', name);
                     req.flash('email', email);
                     return res.redirect('/register');
@@ -28,33 +28,31 @@ function authController() {
                 }
 
                 // Checking if the user already exits with the same email
-                User.exists({ email: email }, async (err, result) => {
-                    if (result) {
-                        req.flash('error', 'Email already exists');
-                        req.flash('name', name);
-                        req.flash('email', email);
-                        return res.redirect('/register');
-                    }
-                    //Hashing Password
-                    const hashedPassword = await bcrypt.hash(password, 11);
-                    // Creating a New User
-                    const user = new User({
-                        name,
-                        email,
-                        password: hashedPassword,
-                        cpassword: hashedPassword,
-                    });
-                    //Saving User
-                    await user
-                        .save()
-                        .then((user) => {
-                            return res.redirect('/');
-                        })
-                        .catch((err) => {
-                            req.flash('error', 'Something went wrong');
-                            return res.redirect('/');
-                        });
+                const userExists = await User.exists({ email: email });
+                if (userExists) {
+                    req.flash('error', 'Email already exists');
+                    req.flash('name', name);
+                    req.flash('email', email);
+                    return res.redirect('/register');
+                }
+
+                //Hashing Password
+                const hashedPassword = await bcrypt.hash(password, 11);
+                // Creating a New User
+                const user = new User({
+                    name,
+                    email,
+                    password: hashedPassword,
+                    cpassword: hashedPassword,
                 });
+                //Saving User
+                const userSaved = await user.save();
+                if (userSaved) {
+                    return res.redirect('/');
+                } else {
+                    req.flash('error', 'Something went wrong');
+                    return res.redirect('/');
+                }
             } catch (error) {
                 req.flash('error', 'Something went wrong');
                 return res.redirect('/register');
