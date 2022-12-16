@@ -12,6 +12,7 @@ import routes from './routes/web.js';
 import session from 'express-session';
 import MongoDbStore from 'connect-mongo'; // To store sessions into database
 import flash from 'express-flash';
+import passport from 'passport';
 
 // Session Config
 app.use(
@@ -25,7 +26,11 @@ app.use(
         cookie: { maxAge: 1000 * 60 * 60 * 24 }, // 24 hours
     })
 );
-
+// Passport Config
+import { passportInit } from './app/config/passport.js';
+passportInit(passport);
+app.use(passport.initialize());
+app.use(passport.session());
 //Middlewares
 app.use((req, res, next) => {
     res.locals.session = req.session;
