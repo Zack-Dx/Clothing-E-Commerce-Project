@@ -1,5 +1,6 @@
 import { User } from '../../models/user.js';
 import bcrypt from 'bcrypt';
+import passport from 'passport';
 function authController() {
     return {
         //Register (GET ROUTE)
@@ -8,6 +9,26 @@ function authController() {
         },
         login(req, res) {
             res.render('auth/login');
+        },
+
+        postlogin(req, res, next) {
+            passport.authenticate('local', (err, user, info) => {
+                if (err) {
+                    req.flash('error', info.message);
+                    return next(err);
+                }
+                if (!user) {
+                    req.flash('error', info.message);
+                    return res.redirect('/login');
+                }
+                req.logIn(user, (err) => {
+                    if (err) {
+                        req.flash('error', info.message);
+                        return next(err);
+                    }
+                    return res.redirect('/');
+                });
+            })(req, res, next);
         },
         //Registration (POST ROUTE)
         async postRegister(req, res) {
@@ -57,6 +78,15 @@ function authController() {
                 req.flash('error', 'Something went wrong');
                 return res.redirect('/register');
             }
+        },
+        // Logout
+        logout(req, res, next) {
+            req.logout(function (err) {
+                if (err) {
+                    return next(err);
+                }
+                return res.redirect('/login');
+            });
         },
     };
 }
