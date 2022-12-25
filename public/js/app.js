@@ -9207,6 +9207,14 @@ addToCart.forEach(function (btn) {
   });
 });
 
+//Removing Alert Message after Order Place
+var alertMsg = document.querySelector('#success-alert');
+if (alertMsg) {
+  setTimeout(function () {
+    alertMsg.remove();
+  }, 2000);
+}
+
 /***/ })
 
 /******/ 	});

@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { Order } from '../../../models/order.js';
 function orderController() {
     return {
@@ -17,8 +18,9 @@ function orderController() {
                     address,
                 });
                 await order.save();
-                req.flash('success', 'Order Placed Successfully');
-                return res.redirect('/');
+                req.flash('success', 'Order Placed Successfully!');
+                delete req.session.cart; // to delete cart Object's Property
+                return res.redirect('/customer/orders');
             } catch (error) {
                 req.flash('error', 'Something went wrong');
                 console.log(error);
@@ -26,8 +28,21 @@ function orderController() {
             }
         },
         async index(req, res) {
-            const orders = Order.find({ customerId: req.user._id }); // order fetching logged in user
-            res.render('purchase/order', { orders });
+            try {
+                const orders = await Order.find(
+                    { customerId: req.user._id },
+                    null,
+                    {
+                        sort: {
+                            createdAt: -1,
+                        },
+                    }
+                ); // order fetching logged in user
+                return res.render('purchase/order', { orders, moment });
+            } catch (error) {
+                console.log(error);
+                return res.redirect('/shop');
+            }
         },
     };
 }

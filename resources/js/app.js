@@ -32,3 +32,11 @@ addToCart.forEach((btn) => {
         updateCart(tshirt);
     });
 });
+
+//Removing Alert Message after Order Place
+const alertMsg = document.querySelector('#success-alert');
+if (alertMsg) {
+    setTimeout(() => {
+        alertMsg.remove();
+    }, 2000);
+}

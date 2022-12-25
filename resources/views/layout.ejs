@@ -23,7 +23,7 @@
       <div>
         <ul class="flex items-center text-center space-x-4 font-bold md:flex-row">
           <li><a href="/">Home</a></li>
-          <li><a href="/tshirts">Shop</a></li>
+          <li><a href="/shop">Shop</a></li>
           <%if(user){ %>
             <li>
               <form id="logout" action="/logout" method="POST">
@@ -76,17 +76,9 @@
               </h2>
               <nav class="list-none mb-10">
                 <li>
-                  <a class="text-gray-600 hover:text-gray-800">T-Shirts</a>
+                  <a href="/shop" class="text-gray-600 hover:text-gray-800">T-Shirts</a>
                 </li>
-                <li>
-                  <a class="text-gray-600 hover:text-gray-800">Hoodies</a>
-                </li>
-                <li>
-                  <a class="text-gray-600 hover:text-gray-800">Caps</a>
-                </li>
-                <li>
-                  <a class="text-gray-600 hover:text-gray-800">Mugs</a>
-                </li>
+
               </nav>
             </div>
 

@@ -9,6 +9,9 @@ import { homeController } from '../app/http/controllers/homeController.js';
 
 //Middleware Imports
 import { guest } from '../app/http/middlewares/guest.js';
+import { auth } from '../app/http/middlewares/auth.js';
+
+// Routing
 export default function initRoutes(app) {
     // Home Route
     app.get('/', homeController().index);
@@ -23,11 +26,11 @@ export default function initRoutes(app) {
     // Cart Routes
     app.get('/cart', cartController().cart);
     app.post('/update-cart', cartController().update);
-    app.post('/orders', orderController().store);
-    app.get('/customer/orders', orderController().index);
+    app.post('/orders', auth, orderController().store);
+    app.get('/customer/orders', auth, orderController().index);
 
     //Tshirt Routes
-    app.get('/tshirts', tshirtController().index);
+    app.get('/shop', tshirtController().index);
 
     //404 Error Page
     app.get('*', errorPage().index);
