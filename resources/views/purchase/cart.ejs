@@ -23,7 +23,8 @@
                 <div class="w-3/4 bg-white px-10 py-10">
                     <div class="flex justify-between border-b pb-8">
                         <h1 class="font-semibold text-2xl">Shopping Cart</h1>
-                        <h2 class="font-semibold text-2xl">Customer: <%= user.name %>
+                        <h2 class="font-semibold text-2xl">
+                            <%= user? `Customer: ${user.name}` : '' %>
                         </h2>
                     </div>
                     <div class="flex mt-10 mb-5">
@@ -91,26 +92,25 @@
                                 Continue Shopping
                             </a>
                 </div>
-
                 <div id="summary" class="w-1/4 px-8 py-10">
-
                     <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
+                    <% if(user){ %>
 
-                    <div class="mb-6 mt-2">
-                        <label for="phone" class="block mb-2 text-sm font-medium ">Contact
-                        </label>
-                        <input type="phone" placeholder="Enter your phone"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg   block w-full p-2.5">
-                    </div>
-                    <form action="/" method="POST">
+                        <div class="mb-6 mt-2">
+                            <form action="/orders" method="POST">
+                                <label for="phone" class="block mb-2 text-sm font-medium ">Contact
+                                </label>
+                                <input name="phone" type="phone" placeholder="Enter your phone"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg   block w-full p-2.5">
+                        </div>
+
                         <div class="mb-6 ">
                             <label for="address" class="block mb-2 text-sm font-medium ">Your
                                 Address</label>
-                            <input type="text" id="address" placeholder="Enter your address"
+                            <input name="address" type="text" id="address" placeholder="Enter your address" n
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg   block w-full p-2.5"
                                 required>
                         </div>
-
                         <div class="flex justify-between mt-10 mb-5">
                             <span class="font-semibold text-sm uppercase">
                                 <%=session.cart.totalQty%> ITEMS
@@ -119,11 +119,19 @@
                                 ₹ <%=session.cart.totalPrice %>
                             </span>
                         </div>
-
-                        <button
+                        <button type="submit"
                             class="bg-pink-500 font-semibold hover:bg-pink-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
+                        <% } else { %>
+                            <a href="/login"> <button type="button"
+                                    class="bg-pink-500 font-semibold hover:bg-pink-600 py-3 text-sm text-white uppercase w-full">
+                                    Login to Checkout
+                                </button>
+                            </a>
+                            <% } %>
+                                </form>
+
                 </div>
-                </form>
+
             </div>
 
         </div>
