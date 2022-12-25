@@ -1,4 +1,5 @@
 //Controllers Import
+import { AdminOrderController } from '../app/http/controllers/admin/orderController.js';
 import { errorPage } from '../app/http/controllers/404Controller.js';
 import { authController } from '../app/http/controllers/authController.js';
 import { cartController } from '../app/http/controllers/customers/cartController.js';
@@ -31,6 +32,9 @@ export default function initRoutes(app) {
 
     //Tshirt Routes
     app.get('/shop', tshirtController().index);
+
+    //Admin routes
+    app.get('/admin/orders', auth, AdminOrderController().index);
 
     //404 Error Page
     app.get('*', errorPage().index);
