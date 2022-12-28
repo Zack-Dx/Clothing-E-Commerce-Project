@@ -12,7 +12,7 @@
 
 <body>
   <section>
-    <nav class="mx-auto shadow-md flex-col flex items-center justify-between my-1 md:flex-row">
+    <nav class="mx-auto shadow-md flex-col flex items-center justify-between  md:flex-row">
       <div class="logo ml-4">
         <figure>
           <a href="/">
@@ -37,7 +37,7 @@
               <li><a href="/login">Login</a></li>
               <%} %>
                 <li id="toggleCart">
-                  <a href="/cart" class="px-3 m-2 rounded-full py-2 flex items-center btn-primary">
+                  <a href="/cart" class="px-3 mr-5 rounded-full py-2 flex items-center btn-primary">
                     <span id="cartCounter" class="text-white font-bold pr-2">
                       <%= session.cart ? session.cart.totalQty : "" %>
                     </span>
@@ -52,7 +52,7 @@
   <hr />
   <%-body%>
 
-    <!-- Checkout Section -->
+    <!-- Footer Section -->
 
 
     <section>
@@ -62,7 +62,7 @@
           <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
             <a href="/cart"
               class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-              <img src="/img/logo.png" class="h-16" alt="logo" />
+              <img src="/img/logo2.png" class="h-16" alt="logo" />
               <!-- <span class="ml-3 text-xl">mernesemble.com</span> -->
             </a>
             <p class="mt-2 px-3 text-sm text-gray-500">
