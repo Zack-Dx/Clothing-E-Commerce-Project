@@ -11,6 +11,7 @@ import { homeController } from '../app/http/controllers/homeController.js';
 //Middleware Imports
 import { guest } from '../app/http/middlewares/guest.js';
 import { auth } from '../app/http/middlewares/auth.js';
+import { admin } from '../app/http/middlewares/admin.js';
 
 // Routing
 export default function initRoutes(app) {
@@ -34,7 +35,7 @@ export default function initRoutes(app) {
     app.get('/shop', tshirtController().index);
 
     //Admin routes
-    app.get('/admin/orders', auth, AdminOrderController().index);
+    app.get('/admin/orders', admin, AdminOrderController().index);
 
     //404 Error Page
     app.get('*', errorPage().index);

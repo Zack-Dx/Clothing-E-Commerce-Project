@@ -10,7 +10,11 @@ function AdminOrderController() {
                 )
                     .populate('customerId', '-password, -cpassword')
                     .exec((err, orders) => {
-                        res.render('admin/order.ejs');
+                        if (req.xhr) {
+                            return res.json(orders);
+                        } else {
+                            return res.render('admin/order.ejs');
+                        }
                     });
             } catch (error) {
                 console.log('error');

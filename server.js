@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 dotenv.config();
+
 import express, { urlencoded } from 'express';
 const app = express();
 const PORT = process.env.PORT || 80;
@@ -9,8 +10,8 @@ dbConnection();
 import { path, __dirname } from './path.js';
 import expressEjsLayouts from 'express-ejs-layouts';
 import routes from './routes/web.js';
-import session from 'express-session';
 import MongoDbStore from 'connect-mongo'; // To store sessions into database
+import session from 'express-session';
 import flash from 'express-flash';
 import passport from 'passport';
 

@@ -1,4 +1,4 @@
-<section class="login flex justify-center pt-24">
+<section class="login flex justify-center pt-24 bg-pink-100">
     <div class="w-full max-w-xs">
         <form action="/login" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <% if(messages.error){ %>
@@ -26,12 +26,12 @@
                         <button class="btn-primary rounded-full text-white font-bold py-2 px-4">
                             Login
                         </button>
-                        <a class="inline-block align-baseline font-bold text-sm" href="/register">
+                        <a class="inline-block align-baseline hover:text-pink-800 font-bold text-sm" href="/register">
                             Don't have an account?
                         </a>
                     </div>
         </form>
-        <p class="text-center text-gray-500 text-xs">
+        <p class="py-3 font-bold text-center text-gray-500 text-xs">
             &copy;2022 Zack Dx. All rights reserved.
         </p>
     </div>

@@ -2,6 +2,9 @@ import { User } from '../../models/user.js';
 import bcrypt from 'bcrypt';
 import passport from 'passport';
 function authController() {
+    const _getRedirectUrl = (req) => {
+        return req.user.role === 'admin' ? '/admin/orders' : '/customer/orders';
+    };
     return {
         //Register (GET ROUTE)
         register(req, res) {
@@ -32,7 +35,7 @@ function authController() {
                         req.flash('error', info.message);
                         return next(err);
                     }
-                    return res.redirect('/');
+                    return res.redirect(_getRedirectUrl(req));
                 });
             })(req, res, next);
         },
