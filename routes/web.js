@@ -1,42 +1,45 @@
 //Controllers Import
-import { AdminOrderController } from '../app/http/controllers/admin/orderController.js';
-import { errorPage } from '../app/http/controllers/404Controller.js';
-import { authController } from '../app/http/controllers/authController.js';
-import { cartController } from '../app/http/controllers/customers/cartController.js';
-import { orderController } from '../app/http/controllers/customers/orderController.js';
-import { tshirtController } from '../app/http/controllers/customers/pages/tshirtController.js';
+import { AdminOrderController } from "../app/http/controllers/admin/orderController.js";
+import { AdminstatusController } from "../app/http/controllers/admin/statusController.js";
+import { errorPage } from "../app/http/controllers/404Controller.js";
+import { authController } from "../app/http/controllers/authController.js";
+import { cartController } from "../app/http/controllers/customers/cartController.js";
+import { orderController } from "../app/http/controllers/customers/orderController.js";
+import { tshirtController } from "../app/http/controllers/customers/pages/tshirtController.js";
 
-import { homeController } from '../app/http/controllers/homeController.js';
+import { homeController } from "../app/http/controllers/homeController.js";
 
 //Middleware Imports
-import { guest } from '../app/http/middlewares/guest.js';
-import { auth } from '../app/http/middlewares/auth.js';
-import { admin } from '../app/http/middlewares/admin.js';
+import { guest } from "../app/http/middlewares/guest.js";
+import { auth } from "../app/http/middlewares/auth.js";
+import { admin } from "../app/http/middlewares/admin.js";
 
 // Routing
 export default function initRoutes(app) {
-    // Home Route
-    app.get('/', homeController().index);
+  // Home Route
+  app.get("/", homeController().index);
 
-    // Authentication Routes
-    app.get('/register', guest, authController().register);
-    app.post('/register', authController().postRegister);
-    app.get('/login', guest, authController().login);
-    app.post('/login', authController().postlogin);
-    app.post('/logout', authController().logout);
+  // Authentication Routes
+  app.get("/register", guest, authController().register);
+  app.post("/register", authController().postRegister);
+  app.get("/login", guest, authController().login);
+  app.post("/login", authController().postlogin);
+  app.post("/logout", authController().logout);
 
-    // Cart Routes
-    app.get('/cart', cartController().cart);
-    app.post('/update-cart', cartController().update);
-    app.post('/orders', auth, orderController().store);
-    app.get('/customer/orders', auth, orderController().index);
+  // Customer Cart Routes
+  app.get("/cart", cartController().cart);
+  app.post("/update-cart", cartController().update);
+  app.post("/orders", auth, orderController().store);
+  app.get("/customer/orders", auth, orderController().index);
+  app.get("/customer/orders/:id", auth, orderController().show);
 
-    //Tshirt Routes
-    app.get('/shop', tshirtController().index);
+  //Shop Routes
+  app.get("/shop", tshirtController().index);
 
-    //Admin routes
-    app.get('/admin/orders', admin, AdminOrderController().index);
+  //Admin Routes
+  app.get("/admin/orders", admin, AdminOrderController().index);
+  app.post("/admin/order/status", admin, AdminstatusController().update);
 
-    //404 Error Page
-    app.get('*', errorPage().index);
+  //404 Error Page
+  app.get("*", errorPage().index);
 }

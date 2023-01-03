@@ -281,3 +281,30 @@ nav li a:hover {
 a.link {
   color: rgb(236, 72, 153);
 }
+
+section.status {
+  background: #f8f8f8;
+  min-height: 86vh;
+}
+
+.status-box {
+  padding: 60px 0;
+}
+
+.status-box ul li span {
+  position: relative;
+  padding: 0px 20px;
+}
+
+.status-box ul li span:after {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 1 10px #f8f8f8;
+  background: #232323;
+}

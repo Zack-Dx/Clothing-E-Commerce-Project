@@ -52,3 +52,32 @@ nav li a {
 a.link{
   color: $primary;
 }
+
+// Order Section
+section.status {
+  background: $secondary;
+  min-height: 86vh;
+}
+.status-box{
+  padding: 60px 0;
+}
+
+// Dots
+.status-box ul li span{
+  position: relative;
+  padding: 0px 20px;
+}
+.status-box ul li span:after{
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+transform: translateY(-50%);
+box-shadow: 0 0 1 10px $secondary;
+  background: $dark;
+}
+
+// Icons
