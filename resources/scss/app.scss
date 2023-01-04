@@ -1,7 +1,6 @@
 @import "./variables";
-@import '~noty/src/noty.scss';
-@import '~noty/src/themes/mint.scss'
-;
+@import "~noty/src/noty.scss";
+@import "~noty/src/themes/mint.scss";
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -43,13 +42,13 @@ nav li a {
 
 //Noty Notification
 
-.noty_theme__mint{
+.noty_theme__mint {
   border-radius: 50px !important;
   background-color: $primary !important;
 }
 
 // Links
-a.link{
+a.link {
   color: $primary;
 }
 
@@ -58,26 +57,101 @@ section.status {
   background: $secondary;
   min-height: 86vh;
 }
-.status-box{
+.status-box {
   padding: 60px 0;
 }
-
+.status-box ul {
+  margin-left: 65px;
+}
 // Dots
-.status-box ul li span{
+.status-box ul li span {
   position: relative;
   padding: 0px 20px;
 }
-.status-box ul li span:after{
+.status-box ul li span:after {
   content: "";
   position: absolute;
   left: -10px;
-  top: 50%;
+  top: 40%;
   width: 10px;
   height: 10px;
   border-radius: 50%;
-transform: translateY(-50%);
-box-shadow: 0 0 1 10px $secondary;
+  // transform: translateY(50%);
+  box-shadow: 0 0 1 10px $secondary;
   background: $dark;
 }
 
 // Icons
+.status-box ul li span:before {
+  font-family: "Line Awesome Free";
+  font-size: 32px;
+  font-weight: 600;
+  position: absolute;
+  top: 5%;
+  left: -70px;
+  color: inherit;
+}
+
+.status-box ul li:nth-child(1) span:before {
+  content: "\f46c";
+}
+.status-box ul li:nth-child(2) span:before {
+  content: "\f560";
+}
+.status-box ul li:nth-child(3) span:before {
+  content: "\f54f";
+}
+.status-box ul li:nth-child(4) span:before {
+  content: "\f0d1";
+}
+.status-box ul li:nth-child(5) span:before {
+  content: "\f582";
+}
+
+// Line
+.status-box ul li {
+  position: relative;
+}
+.status-box ul li:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -6px;
+  width: 2px;
+  height: 100%;
+  background: $dark;
+  margin-top: 12px;
+}
+// Last Dot
+.status-box ul li:nth-child(5) span:after {
+  box-shadow: 0 20px 1px 20px $secondary;
+}
+
+// Status Completed
+
+//Line
+.status-box ul li.step-completed:before {
+  background: $gray;
+}
+//dots
+.status-box ul li.step-completed span:after {
+  background: $gray;
+}
+//texts
+.status-box ul li.step-completed span {
+  color: $gray;
+}
+
+// Current Status
+.status-box ul li.current span {
+  color: $primary;
+}
+.status-box ul li.current span:after {
+  background: $primary;
+}
+
+// Time
+.status-box ul li small {
+  float: right;
+  margin-bottom: 10px;
+}

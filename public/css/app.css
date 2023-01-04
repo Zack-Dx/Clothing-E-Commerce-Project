@@ -291,6 +291,10 @@ section.status {
   padding: 60px 0;
 }
 
+.status-box ul {
+  margin-left: 65px;
+}
+
 .status-box ul li span {
   position: relative;
   padding: 0px 20px;
@@ -300,11 +304,84 @@ section.status {
   content: "";
   position: absolute;
   left: -10px;
-  top: 50%;
+  top: 40%;
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  transform: translateY(-50%);
   box-shadow: 0 0 1 10px #f8f8f8;
   background: #232323;
+}
+
+.status-box ul li span:before {
+  font-family: "Line Awesome Free";
+  font-size: 32px;
+  font-weight: 600;
+  position: absolute;
+  top: 5%;
+  left: -70px;
+  color: inherit;
+}
+
+.status-box ul li:nth-child(1) span:before {
+  content: "\f46c";
+}
+
+.status-box ul li:nth-child(2) span:before {
+  content: "\f560";
+}
+
+.status-box ul li:nth-child(3) span:before {
+  content: "\f54f";
+}
+
+.status-box ul li:nth-child(4) span:before {
+  content: "\f0d1";
+}
+
+.status-box ul li:nth-child(5) span:before {
+  content: "\f582";
+}
+
+.status-box ul li {
+  position: relative;
+}
+
+.status-box ul li:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -6px;
+  width: 2px;
+  height: 100%;
+  background: #232323;
+  margin-top: 12px;
+}
+
+.status-box ul li:nth-child(5) span:after {
+  box-shadow: 0 20px 1px 20px #f8f8f8;
+}
+
+.status-box ul li.step-completed:before {
+  background: #ccc;
+}
+
+.status-box ul li.step-completed span:after {
+  background: #ccc;
+}
+
+.status-box ul li.step-completed span {
+  color: #ccc;
+}
+
+.status-box ul li.current span {
+  color: rgb(236, 72, 153);
+}
+
+.status-box ul li.current span:after {
+  background: rgb(236, 72, 153);
+}
+
+.status-box ul li small {
+  float: right;
+  margin-bottom: 10px;
 }
