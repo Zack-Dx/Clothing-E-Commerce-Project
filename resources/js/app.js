@@ -2,6 +2,8 @@ import axios from "axios";
 import Noty from "noty";
 import moment from "moment";
 import { initAdmin } from "./admin.js";
+
+// Cart Section
 const cart = document.querySelector("#cart");
 const addToCart = document.querySelectorAll(".add-to-cart");
 const cartCounter = document.querySelector("#cartCounter");
@@ -46,7 +48,6 @@ initAdmin();
 
 // Order Status (Rendering Order Status)
 let statuses = document.querySelectorAll(".status-line");
-console.log(statuses);
 let hiddenInput = document.querySelector("#hiddenInput");
 let order = hiddenInput ? hiddenInput.value : null;
 order = JSON.parse(order);
@@ -73,3 +74,19 @@ function updateStatus(order) {
 }
 
 updateStatus(order);
+
+// Socket
+// let socket = io();
+// console.log(socket);
+
+// Join
+// if (order) {
+//   socket.emit("join", `order_${order._id}`);
+// }
+
+// socket.on("orderUpdated", (data) => {
+//   const updatedOrder = { ...order };
+//   updatedOrder.updatedAt = moment().format();
+//   updatedOrder.status = data.status;
+//   console.log(data);
+// });

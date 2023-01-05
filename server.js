@@ -12,7 +12,12 @@ import session from "express-session";
 import MongoDbStore from "connect-mongo"; // To store sessions into database
 import flash from "express-flash";
 import passport from "passport";
+import Emitter from "events";
 dbConnection();
+
+//Event Emitter
+const eventEmitter = new Emitter();
+app.set("eventEmitter", eventEmitter); // Binded to Application
 // Session Config
 app.use(
   session({
@@ -25,11 +30,13 @@ app.use(
     cookie: { maxAge: 1000 * 60 * 60 * 24 }, // 24 hours
   })
 );
+
 // Passport Config
 import { passportInit } from "./app/config/passport.js";
 passportInit(passport);
 app.use(passport.initialize());
 app.use(passport.session());
+
 //Middlewares
 app.use(flash());
 app.use(express.json());
@@ -49,6 +56,22 @@ app.set("view engine", "ejs");
 routes(app);
 
 // PORT
-app.listen(PORT, (req, res) => {
+const server = app.listen(PORT, (req, res) => {
   console.log(`Project is running at port ${PORT}`);
 });
+// Socket connection
+
+// import { Server } from "socket.io";
+// const io = new Server(server);
+
+// io.on("connection", (socket) => {
+//   // Join
+//   io.on("join", (roomName) => {
+//     socket.join(roomName);
+//   });
+// });
+
+// eventEmitter.on("orderUpdated", (data) => {
+//   io.to(`order_${data.id}`).emit("orderUpdated", data);
+// });
+// io.listen(server);

@@ -30795,6 +30795,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
+// Cart Section
 var cart = document.querySelector("#cart");
 var addToCart = document.querySelectorAll(".add-to-cart");
 var cartCounter = document.querySelector("#cartCounter");
@@ -30860,7 +30862,6 @@ if (alertMsg) {
 
 // Order Status (Rendering Order Status)
 var statuses = document.querySelectorAll(".status-line");
-console.log(statuses);
 var hiddenInput = document.querySelector("#hiddenInput");
 var order = hiddenInput ? hiddenInput.value : null;
 order = JSON.parse(order);
@@ -30885,6 +30886,22 @@ function updateStatus(order) {
   });
 }
 updateStatus(order);
+
+// Socket
+// let socket = io();
+// console.log(socket);
+
+// Join
+// if (order) {
+//   socket.emit("join", `order_${order._id}`);
+// }
+
+// socket.on("orderUpdated", (data) => {
+//   const updatedOrder = { ...order };
+//   updatedOrder.updatedAt = moment().format();
+//   updatedOrder.status = data.status;
+//   console.log(data);
+// });
 
 /***/ })
 

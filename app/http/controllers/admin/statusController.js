@@ -11,6 +11,12 @@ function AdminstatusController() {
           try {
             return res.redirect("/admin/orders");
           } catch (error) {
+            // Emit Event
+            // const eventEmitter = req.app.get("eventEmitter");
+            // eventEmitter.emit("orderUpdated", {
+            //   id: req.body.orderId,
+            //   status: req.body.status,
+            // });
             return res.redirect("/admin/orders");
           }
         }

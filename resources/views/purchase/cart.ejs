@@ -19,18 +19,18 @@
     <!-- Checkout Page -->
     <section class="bg-gray-100 p-5">
         <div class="container mx-auto mt-10">
-            <div class="flex shadow-md my-10">
-                <div class="w-3/4 bg-white px-10 py-10">
-                    <div class="flex justify-between border-b pb-8">
+            <div class="flex shadow-md my-10 flex-col md:flex-row">
+                <div class="w-auto md:w-3/4 bg-white px-10 py-10">
+                    <div class="flex flex-col justify-between border-b pb-8 text-center">
                         <h1 class="font-semibold text-2xl">Shopping Cart</h1>
-                        <h2 class="font-semibold text-2xl">
-                            <%= user? `Customer: ${user.name}` : '' %>
+                        <h2 class="font-semibold text-sm mt-3 text-pink-500">
+                            <%= user? `${user.name}` : '' %>
                         </h2>
                     </div>
                     <div class="flex mt-10 mb-5">
                         <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Product Details</h3>
                         <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
-                            Quantity
+                            Qty
                         </h3>
                         <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
                             Price
@@ -92,13 +92,13 @@
                                 Continue Shopping
                             </a>
                 </div>
-                <div id="summary" class="w-1/4 px-8 py-10">
-                    <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
+                <div id="summary" class="w-auto md:w-1/4 px-8 py-10">
                     <% if(user){ %>
+                    <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
 
                         <div class="mb-6 mt-2">
                             <form action="/orders" method="POST">
-                                <label for="phone" class="block mb-2 text-sm font-medium ">Contact
+                                <label for="phone" class="block mb-2 text-sm font-medium ">Phone
                                 </label>
                                 <input name="phone" type="phone" placeholder="Enter your phone"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg   block w-full p-2.5">
@@ -107,9 +107,10 @@
                         <div class="mb-6 ">
                             <label for="address" class="block mb-2 text-sm font-medium ">Your
                                 Address</label>
-                            <input name="address" type="text" id="address" placeholder="Enter your address" n
+                            <!-- <input name="address" type="text" id="address" placeholder="Enter your address" n
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg   block w-full p-2.5"
-                                required>
+                                required> -->
+                                <textarea required placeholder="Enter your Address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" name="address" id="address" cols="30" rows="10"></textarea>
                         </div>
                         <div class="flex justify-between mt-10 mb-5">
                             <span class="font-semibold text-sm uppercase">
@@ -120,10 +121,10 @@
                             </span>
                         </div>
                         <button type="submit"
-                            class="bg-pink-500 font-semibold hover:bg-pink-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
+                            class="bg-pink-500 font-semibold hover:bg-pink-600 py-3 text-sm text-white uppercase w-full rounded-full ">Checkout</button>
                         <% } else { %>
                             <a href="/login"> <button type="button"
-                                    class="bg-pink-500 font-semibold hover:bg-pink-600 py-3 text-sm text-white uppercase w-full">
+                                    class="rounded-full bg-pink-500 font-semibold hover:bg-pink-600 py-3 text-sm text-white uppercase w-full ">
                                     Login to Checkout
                                 </button>
                             </a>
