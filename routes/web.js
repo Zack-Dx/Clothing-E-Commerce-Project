@@ -1,4 +1,5 @@
 //Controllers Import
+import { contactController } from "../app/http/controllers/contactController.js";
 import { AdminOrderController } from "../app/http/controllers/admin/orderController.js";
 import { AdminstatusController } from "../app/http/controllers/admin/statusController.js";
 import { errorPage } from "../app/http/controllers/404Controller.js";
@@ -6,7 +7,6 @@ import { authController } from "../app/http/controllers/authController.js";
 import { cartController } from "../app/http/controllers/customers/cartController.js";
 import { orderController } from "../app/http/controllers/customers/orderController.js";
 import { tshirtController } from "../app/http/controllers/customers/pages/tshirtController.js";
-
 import { homeController } from "../app/http/controllers/homeController.js";
 
 //Middleware Imports
@@ -39,6 +39,9 @@ export default function initRoutes(app) {
   //Admin Routes
   app.get("/admin/orders", admin, AdminOrderController().index);
   app.post("/admin/order/status", admin, AdminstatusController().update);
+
+  //Contact Page
+  app.get("/contact", contactController().contact);
 
   //404 Error Page
   app.get("*", errorPage().index);
