@@ -42,6 +42,7 @@ export default function initRoutes(app) {
 
   //Contact Page
   app.get("/contact", contactController().contact);
+  app.post("/reviews/:name", contactController().reviews);
 
   //404 Error Page
   app.get("*", errorPage().index);

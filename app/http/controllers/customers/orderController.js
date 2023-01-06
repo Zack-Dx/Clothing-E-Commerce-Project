@@ -1,5 +1,6 @@
 import moment from "moment";
 import { Order } from "../../../models/order.js";
+import { User } from "../../../models/user.js";
 function orderController() {
   return {
     async store(req, res) {
@@ -48,9 +49,10 @@ function orderController() {
     async show(req, res) {
       try {
         const order = await Order.findById(req.params.id);
+        const user = await User.findById({ _id: order.customerId });
         // Authorize User
         if (req.user._id.toString() === order.customerId.toString()) {
-          return res.render("purchase/singleOrder", { order });
+          return res.render("purchase/singleOrder", { order, user });
         }
         return res.redirect("/");
       } catch (error) {

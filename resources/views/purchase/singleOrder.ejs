@@ -2,6 +2,37 @@
   <div class="container mx-auto">
     <div class="status-box w-2/3 mx-auto">
       <div class="flex justify-between mb-12">
+        <%if(order.status ==='completed') {%>
+       
+          <form action="/reviews/<%=user.name%>" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full" >
+            <div class="mb-6">
+              <label
+                class="block text-pink-700 text-sm font-bold mb-2"
+                for="review"
+              >
+           Hello,<%=user.name %> We've delivered your purchase to you successfully.
+              </label>
+              <textarea
+              required
+                name="review"
+                placeholder="Enter your review"
+                id="review"
+                cols="30"
+                rows="10"
+                class="shadow appearance-none border focus:border-red-500 rounded w-full py-2 px-3 text-black mb-3 leading-tight focus:outline-none focus:shadow-outline"
+              ></textarea>
+            </div>
+            <div class="flex items-center justify-between">
+              <button
+                class="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="submit"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+        <% }else { %>
         <h1 class="text-xl font-bold">Delivery Status</h1>
         <h6 class="bg-white py-1 rounded-full px-4 text-xs text-green-600">
           <%=order._id%>
@@ -29,6 +60,7 @@
           <span>Complete</span>
         </li>
       </ul>
+      <% } %>
     </div>
   </div>
 </section>
