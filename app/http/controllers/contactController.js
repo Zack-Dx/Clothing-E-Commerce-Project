@@ -1,10 +1,23 @@
+import { Contact } from "../../models/contact.js";
 import { Testimonials } from "../../models/testimonial.js";
 function contactController() {
-  // Factory Function (Function returning an Object)
   return {
     // Contact US
-    async contact(req, res) {
+    contact(req, res) {
       return res.render("contact");
+    },
+    async postContact(req, res) {
+      try {
+        const contact = new Contact({
+          email: req.body.email,
+          message: req.body.message,
+        });
+        await contact.save();
+        return res.redirect("/");
+      } catch (error) {
+        console.log(error);
+        return res.redirect("/");
+      }
     },
 
     // Testimonials

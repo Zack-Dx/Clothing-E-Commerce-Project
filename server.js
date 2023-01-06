@@ -23,11 +23,11 @@ app.use(
   session({
     secret: process.env.COOKIE_SECRET,
     resave: false,
+    saveUninitialized: false,
     cookie: { maxAge: 1000 * 60 * 60 * 24 }, // 24 hours
     store: MongoDbStore.create({
       mongoUrl: process.env.MONGO_CONNECTION_URL,
     }),
-    saveUninitialized: false,
   })
 );
 
@@ -36,7 +36,6 @@ import { passportInit } from "./app/config/passport.js";
 passportInit(passport);
 app.use(passport.initialize());
 app.use(passport.session());
-
 //Middlewares
 app.use(flash());
 app.use(express.json());
