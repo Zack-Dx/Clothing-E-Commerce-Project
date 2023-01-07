@@ -29,6 +29,11 @@ export default function initRoutes(app) {
   // Customer Cart Routes
   app.get("/cart", cartController().cart);
   app.post("/update-cart", cartController().update);
+  app.post("/clear-cart", cartController().clear);
+  app.post("/increment-cart", cartController().add);
+  app.post("/decrement-cart", cartController().sub);
+
+  // Customer Order Routes
   app.post("/orders", auth, orderController().store);
   app.get("/customer/orders", auth, orderController().index);
   app.get("/customer/orders/:id", auth, orderController().show);

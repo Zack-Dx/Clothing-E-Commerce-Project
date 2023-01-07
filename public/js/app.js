@@ -30800,13 +30800,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var cart = document.querySelector("#cart");
 var addToCart = document.querySelectorAll(".add-to-cart");
 var cartCounter = document.querySelector("#cartCounter");
+var clearCart = document.querySelector("#clear-cart");
+var increment = document.querySelectorAll("#increment");
+var decrement = document.querySelectorAll("#decrement");
 
-//Update Cart
-function updateCart(_x) {
-  return _updateCart.apply(this, arguments);
-} // Add to Cart
-function _updateCart() {
-  _updateCart = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(tshirt) {
+// Increment Cart Quantity
+increment.forEach(function (btn) {
+  btn.addEventListener("click", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
     var res;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) {
@@ -30814,9 +30814,79 @@ function _updateCart() {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post("/update-cart", tshirt);
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post("/increment-cart", JSON.parse(btn.dataset.product));
           case 3:
             res = _context.sent;
+            window.location.reload();
+            _context.next = 10;
+            break;
+          case 7:
+            _context.prev = 7;
+            _context.t0 = _context["catch"](0);
+            new noty__WEBPACK_IMPORTED_MODULE_0__({
+              type: "error",
+              timeout: 1000,
+              text: "Something went wrong"
+            }).show();
+          case 10:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee, null, [[0, 7]]);
+  })));
+});
+
+// Decrement Cart Quantity
+decrement.forEach(function (btn) {
+  btn.addEventListener("click", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+    var res;
+    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.prev = 0;
+            _context2.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post("/decrement-cart", JSON.parse(btn.dataset.product));
+          case 3:
+            res = _context2.sent;
+            console.log(res);
+            window.location.reload();
+            _context2.next = 11;
+            break;
+          case 8:
+            _context2.prev = 8;
+            _context2.t0 = _context2["catch"](0);
+            new noty__WEBPACK_IMPORTED_MODULE_0__({
+              type: "error",
+              timeout: 1000,
+              text: "Something went wrong"
+            }).show();
+          case 11:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2, null, [[0, 8]]);
+  })));
+});
+
+//Update Cart
+function updateCart(_x) {
+  return _updateCart.apply(this, arguments);
+} // Add to Cart
+function _updateCart() {
+  _updateCart = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(tshirt) {
+    var res;
+    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+      while (1) {
+        switch (_context4.prev = _context4.next) {
+          case 0:
+            _context4.prev = 0;
+            _context4.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post("/update-cart", tshirt);
+          case 3:
+            res = _context4.sent;
             cartCounter.innerText = res.data.totalQty; // Updating Cart Counter
 
             //Noty Notification
@@ -30825,11 +30895,11 @@ function _updateCart() {
               timeout: 1000,
               text: "Items added to cart"
             }).show();
-            _context.next = 11;
+            _context4.next = 11;
             break;
           case 8:
-            _context.prev = 8;
-            _context.t0 = _context["catch"](0);
+            _context4.prev = 8;
+            _context4.t0 = _context4["catch"](0);
             new noty__WEBPACK_IMPORTED_MODULE_0__({
               type: "error",
               timeout: 1000,
@@ -30837,10 +30907,10 @@ function _updateCart() {
             }).show();
           case 11:
           case "end":
-            return _context.stop();
+            return _context4.stop();
         }
       }
-    }, _callee, null, [[0, 8]]);
+    }, _callee4, null, [[0, 8]]);
   }));
   return _updateCart.apply(this, arguments);
 }
@@ -30850,6 +30920,40 @@ addToCart.forEach(function (btn) {
     updateCart(tshirt);
   });
 });
+
+// Clear Cart
+
+if (clearCart) {
+  clearCart.addEventListener("click", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+    var res;
+    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.prev = 0;
+            _context3.next = 3;
+            return axios__WEBPACK_IMPORTED_MODULE_3__["default"].post("/clear-cart");
+          case 3:
+            res = _context3.sent;
+            window.location.reload();
+            _context3.next = 10;
+            break;
+          case 7:
+            _context3.prev = 7;
+            _context3.t0 = _context3["catch"](0);
+            new noty__WEBPACK_IMPORTED_MODULE_0__({
+              type: "error",
+              timeout: 1000,
+              text: "Something went wrong"
+            }).show();
+          case 10:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3, null, [[0, 7]]);
+  })));
+}
 
 //Removing Alert Message after Order Place
 var alertMsg = document.querySelector("#success-alert");

@@ -7,6 +7,48 @@ import { initAdmin } from "./admin.js";
 const cart = document.querySelector("#cart");
 const addToCart = document.querySelectorAll(".add-to-cart");
 const cartCounter = document.querySelector("#cartCounter");
+const clearCart = document.querySelector("#clear-cart");
+const increment = document.querySelectorAll("#increment");
+const decrement = document.querySelectorAll("#decrement");
+
+// Increment Cart Quantity
+increment.forEach((btn) => {
+  btn.addEventListener("click", async () => {
+    try {
+      const res = await axios.post(
+        "/increment-cart",
+        JSON.parse(btn.dataset.product)
+      );
+      window.location.reload();
+    } catch (error) {
+      new Noty({
+        type: "error",
+        timeout: 1000,
+        text: "Something went wrong",
+      }).show();
+    }
+  });
+});
+
+// Decrement Cart Quantity
+decrement.forEach((btn) => {
+  btn.addEventListener("click", async () => {
+    try {
+      const res = await axios.post(
+        "/decrement-cart",
+        JSON.parse(btn.dataset.product)
+      );
+      console.log(res);
+      window.location.reload();
+    } catch (error) {
+      new Noty({
+        type: "error",
+        timeout: 1000,
+        text: "Something went wrong",
+      }).show();
+    }
+  });
+});
 
 //Update Cart
 async function updateCart(tshirt) {
@@ -36,6 +78,23 @@ addToCart.forEach((btn) => {
     updateCart(tshirt);
   });
 });
+
+// Clear Cart
+
+if (clearCart) {
+  clearCart.addEventListener("click", async () => {
+    try {
+      const res = await axios.post("/clear-cart");
+      window.location.reload();
+    } catch (error) {
+      new Noty({
+        type: "error",
+        timeout: 1000,
+        text: "Something went wrong",
+      }).show();
+    }
+  });
+}
 
 //Removing Alert Message after Order Place
 const alertMsg = document.querySelector("#success-alert");
