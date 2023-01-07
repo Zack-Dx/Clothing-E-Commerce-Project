@@ -21,7 +21,8 @@
     "dev": "nodemon server.js -e js,ejs",
     "serve": "node server.js",
     "watch": "npx mix watch",
-    "development": "mix"
+    "development": "mix",
+    "production": "npx mix --production"
   },
   "name": "e-commerce-project",
   "version": "1.0.0",

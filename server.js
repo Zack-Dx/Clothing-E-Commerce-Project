@@ -58,19 +58,3 @@ routes(app);
 const server = app.listen(PORT, (req, res) => {
   console.log(`Project is running at port ${PORT}`);
 });
-// Socket connection
-
-// import { Server } from "socket.io";
-// const io = new Server(server);
-
-// io.on("connection", (socket) => {
-//   // Join
-//   io.on("join", (roomName) => {
-//     socket.join(roomName);
-//   });
-// });
-
-// eventEmitter.on("orderUpdated", (data) => {
-//   io.to(`order_${data.id}`).emit("orderUpdated", data);
-// });
-// io.listen(server);

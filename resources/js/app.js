@@ -137,19 +137,3 @@ function updateStatus(order) {
 }
 
 updateStatus(order);
-
-// Socket
-// let socket = io();
-// console.log(socket);
-
-// Join
-// if (order) {
-//   socket.emit("join", `order_${order._id}`);
-// }
-
-// socket.on("orderUpdated", (data) => {
-//   const updatedOrder = { ...order };
-//   updatedOrder.updatedAt = moment().format();
-//   updatedOrder.status = data.status;
-//   console.log(data);
-// });
