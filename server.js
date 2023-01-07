@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import express, { urlencoded } from "express";
 const app = express();
-const PORT = process.env.APP_PORT || 4900;
+const PORT = process.env.PORT || 4900;
 import mongoose from "mongoose";
 import { dbConnection } from "./app/db/conn.js";
 import { path, __dirname } from "./path.js";
