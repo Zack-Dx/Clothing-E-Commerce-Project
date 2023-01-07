@@ -30962,7 +30962,11 @@ if (alertMsg) {
     alertMsg.remove();
   }, 2000);
 }
-(0,_admin_js__WEBPACK_IMPORTED_MODULE_2__.initAdmin)();
+// To run Admin Function when only on Admin Page
+var adminAreaPath = window.location.pathname;
+if (adminAreaPath.includes("admin")) {
+  (0,_admin_js__WEBPACK_IMPORTED_MODULE_2__.initAdmin)();
+}
 
 // Order Status (Rendering Order Status)
 var statuses = document.querySelectorAll(".status-line");

@@ -304,7 +304,7 @@ section.status {
   content: "";
   position: absolute;
   left: -10px;
-  top: 40%;
+  top: 5%;
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -384,4 +384,17 @@ section.status {
 .status-box ul li small {
   float: right;
   margin-bottom: 10px;
+}
+
+@media (max-width: 1024px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 576px) {
+  .status-box ul li span:before {
+    font-size: 34px;
+  }
 }

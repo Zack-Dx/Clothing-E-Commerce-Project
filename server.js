@@ -52,9 +52,9 @@ app.use(expressEjsLayouts); // For layout
 app.use(express.static("public"));
 app.set("views", path.join(__dirname, "./resources/views"));
 app.set("view engine", "ejs");
-routes(app);
 
-// PORT
+// SERVER
+routes(app);
 const server = app.listen(PORT, (req, res) => {
   console.log(`Project is running at port ${PORT}`);
 });

@@ -103,7 +103,11 @@ if (alertMsg) {
     alertMsg.remove();
   }, 2000);
 }
-initAdmin();
+// To run Admin Function when only on Admin Page
+let adminAreaPath = window.location.pathname;
+if (adminAreaPath.includes("admin")) {
+  initAdmin();
+}
 
 // Order Status (Rendering Order Status)
 let statuses = document.querySelectorAll(".status-line");

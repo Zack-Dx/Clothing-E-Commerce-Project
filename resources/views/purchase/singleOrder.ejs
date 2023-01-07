@@ -1,7 +1,7 @@
 <section class="status">
   <div class="container mx-auto">
     <div class="status-box w-2/3 mx-auto">
-      <div class="flex justify-between mb-12">
+      <div class="flex justify-between items-center flex-col mb-12">
         <%if(order.status ==='completed') {%>
        
           <form action="/reviews/<%=user.name%>" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full" >
@@ -10,7 +10,7 @@
                 class="block text-pink-700 text-sm font-bold mb-2"
                 for="review"
               >
-           Hello,<%=user.name %> We've delivered your purchase to you successfully. <span class="text-black">Order NO: <%= order._id%></span> 
+           Hello,<%=user.name %> We've delivered your purchase to you successfully. <br> <span class="text-black">Order NO: <%= order._id%></span> 
               </label>
               <textarea
               required
@@ -34,7 +34,7 @@
         </div>
         <% }else { %>
         <h1 class="text-xl font-bold">Delivery Status</h1>
-        <h6 class="bg-white py-1 rounded-full px-4 text-xs text-green-600">
+        <h6 class=" mt-3 bg-white py-1 rounded-full px-4 text-xs text-green-600">
           <%=order._id%>
         </h6>
         <input
@@ -44,19 +44,19 @@
         />
       </div>
       <ul>
-        <li class="status-line text-xl pb-16" data-status="order_placed">
+        <li class="status-line text-sm lg:text-xl pb-16" data-status="order_placed">
           <span>Order Placed</span>
         </li>
-        <li class="status-line text-xl pb-16" data-status="confirmed">
+        <li class="status-line text-sm lg:text-xl pb-16" data-status="confirmed">
           <span>Order Confirmation</span>
         </li>
-        <li class="status-line text-xl pb-16" data-status="prepared">
+        <li class="status-line text-sm lg:text-xl pb-16" data-status="prepared">
           <span>Preparation</span>
         </li>
-        <li class="status-line text-xl pb-16" data-status="delivered">
+        <li class="status-line text-sm lg:text-xl pb-16" data-status="delivered">
           <span>Out for Delivery</span>
         </li>
-        <li class="status-line text-xl" data-status="completed">
+        <li class="status-line text-sm  lg:text-xl" data-status="completed">
           <span>Complete</span>
         </li>
       </ul>
