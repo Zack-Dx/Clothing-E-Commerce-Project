@@ -1,6 +1,7 @@
 //Controllers Import
 import { contactController } from "../app/http/controllers/contactController.js";
 import { AdminOrderController } from "../app/http/controllers/admin/orderController.js";
+import { AdmincontactController } from "../app/http/controllers/admin/contactController.js";
 import { AdminstatusController } from "../app/http/controllers/admin/statusController.js";
 import { errorPage } from "../app/http/controllers/404Controller.js";
 import { authController } from "../app/http/controllers/authController.js";
@@ -44,6 +45,7 @@ export default function initRoutes(app) {
   //Admin Routes
   app.get("/admin/orders", admin, AdminOrderController().index);
   app.post("/admin/order/status", admin, AdminstatusController().update);
+  app.get("/admin/contacts", admin, AdmincontactController().contacts);
 
   //Contact Page
   app.get("/contact", contactController().contact);

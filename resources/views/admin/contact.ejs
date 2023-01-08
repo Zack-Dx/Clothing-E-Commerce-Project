@@ -1,0 +1,21 @@
+<section class="p-12 flex">
+  <% users.forEach((user)=>{ %>
+  <div class="p-4 bg-white m-5 text-center shadow-md">
+    <div>
+      <h3 class="font-bold">Email</h3>
+      <span class="text-pink-600"> <%=user.email%></span>
+    </div>
+    <div>
+      <h5 class="font-bold text-sm">Message</h5>
+      <span class="text-pink-500"><%=user.message%></span>
+    </div>
+    <div>
+      <h5 class="font-bold text-sm">Time</h5>
+      <span class="text-pink-900">
+        <%= moment(user.createdAt).format("hh:mm A") %></span
+      >
+    </div>
+  </div>
+
+  <%}) %>
+</section>

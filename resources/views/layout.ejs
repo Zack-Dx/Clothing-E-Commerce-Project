@@ -33,6 +33,10 @@
             <li><a href="/shop">Shop</a></li>
             <%if(user){ %>
             <li><a href="/customer/orders">Orders</a></li>
+            <%if(user.role ==='admin'){ %>
+            <li><a href="/admin/contacts">Contacts</a></li>
+            <li><a href="/admin/orders">Manage</a></li>
+            <%} %>
             <li>
               <form id="logout" action="/logout" method="POST">
                 <!-- Onclick to get and submit the form on postRequest -->
