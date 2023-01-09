@@ -30,10 +30,10 @@
             class="flex items-center text-base text-center space-x-2 font-bold md:flex-row mb-2"
           >
             <li><a href="/">Home</a></li>
+            <%if(user){ %> <% if(user.role ==='customer'){ %>
             <li><a href="/shop">Shop</a></li>
-            <%if(user){ %>
             <li><a href="/customer/orders">Orders</a></li>
-            <%if(user.role ==='admin'){ %>
+            <%} else if(user.role ==='admin') { %>
             <li><a href="/admin/contacts">Contacts</a></li>
             <li><a href="/admin/orders">Manage</a></li>
             <%} %>
@@ -150,6 +150,38 @@
                 </li>
               </nav>
             </div>
+            <%if(user) {%> <%if(user.role ==='admin') { %>
+            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+              <h2
+                class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3"
+              >
+                ADMIN
+              </h2>
+              <nav class="list-none mb-10">
+                <li>
+                  <a
+                    href="/customer/orders"
+                    class="text-gray-600 hover:text-gray-800"
+                    >Shop Orders</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/admin/orders"
+                    class="text-gray-600 hover:text-gray-800"
+                    >Manage Orders</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/admin/contacts"
+                    class="text-gray-600 hover:text-gray-800"
+                    >User Contacts</a
+                  >
+                </li>
+              </nav>
+            </div>
+            <%}%> <% }%>
           </div>
         </div>
         <div class="bg-gray-100">
